@@ -22,7 +22,7 @@ npm install
 ### To Run while developing
 watchmedo auto-restart --patterns="*.py;*.html" --recursive -- flask run
 
-### If new Vue components are added to current one updated also run
+### If new Vue components are added OR current ones updated also run
 npm run buildvite
 
 ### If any CSS changes are made, it must be compiled from the input.css to the output.css, so run this
