@@ -5,16 +5,16 @@
 - Python 3.x
 - Node.js and npm
 
+### Clone the Repository
+git clone https://github.com/270271470/studentevents.git
+
+cd flask_app
+
 ### Set Up Python Environment
 python -m venv venv
 source venv\Scripts\activate
 
 pip install -r requirements.txt
-
-### Clone the Repository
-git clone https://github.com/270271470/studentevents.git
-
-cd flask_app
 
 ### Set Up Node.js Environment
 npm install
