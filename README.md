@@ -13,6 +13,7 @@ pip install -r requirements.txt
 
 ### Clone the Repository
 git clone https://github.com/270271470/studentevents.git
+
 cd flask_app
 
 ### Set Up Node.js Environment
