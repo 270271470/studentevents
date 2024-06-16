@@ -8,6 +8,7 @@
 ### Set Up Python Environment
 python -m venv venv
 source venv\Scripts\activate
+
 pip install -r requirements.txt
 
 ### Clone the Repository
