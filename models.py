@@ -4,6 +4,10 @@ from werkzeug.security import generate_password_hash
 # Initialize SQLAlchemy for db interactions
 db = SQLAlchemy()
 
+class Events(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(50), nullable=False)
+
 
 # Define the User model
 class User(db.Model):
