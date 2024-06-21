@@ -27,9 +27,13 @@
               </button>
             </a>
           </div>
-          <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
-            Log in
-          </button>
+          <div>
+            <a href="/login">
+              <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
+                Log in
+                </button>
+            </a>
+          </div>
         </div>
       </nav>
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -66,7 +70,7 @@
       </div>
       <div class="max-w-3xl py-32 sm:py-48 lg:py-56 pl-8">
         <div class="text-left">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Your Gateway to Adventure and Learning</h1>
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Kia Ora! Your Gateway to Adventure and Learning</h1>
           <p class="mt-6 text-lg leading-8 text-gray-300">Discover a wide range of events designed to enrich your student life. From workshops and seminars to adventure clubs and social gatherings, there's something for everyone. Connect, learn, and grow with our exciting events.</p>
           <div class="mt-10 flex items-center justify-start gap-x-6">
             <a href="#" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Start Exploring</a>
@@ -86,8 +90,8 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: 'About Us', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'About Us', href: '/about-us' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const mobileMenuOpen = ref(false)

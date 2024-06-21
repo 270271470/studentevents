@@ -58,6 +58,26 @@ def register():
     return render_template('user/register.html')  # Render registration form template for GET request
 
 
+@app.route('/login')
+def user_login():
+    return render_template('login.html')  # Render admin dash template
+
+
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    return render_template('admin/dashboard.html')  # Render admin dash template
+
+
+@app.route('/user/dashboard')
+def user_dashboard():
+    return render_template('user/dashboard.html')  # Render user dash template
+
+
+@app.route('/admin/dash_users')
+def admin_dash_users():
+    return render_template('admin/dash_users.html')  # Render admin dash template
+
+
 # Run the Flask application
 if __name__ == '__main__':
     app.run()
