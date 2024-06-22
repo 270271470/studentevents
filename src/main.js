@@ -6,7 +6,7 @@ import NavOnly from './nav_only.vue';
 import RegistrationForm from './registration_form.vue';
 import AdminDash from './admin_dashboard.vue';
 import UserDash from './user_dashboard.vue';
-import AdminUsers from './admin_users.vue';
+import AdminManageUsers from './admin_manage_users.vue';
 import UserLogin from './login.vue';
 import Footer from './footer.vue';
 
@@ -16,6 +16,6 @@ createApp(NavOnly).mount('#nav_only');
 createApp(RegistrationForm).mount('#user_registration');
 createApp(AdminDash).mount('#admin-dashboard');
 createApp(UserDash).mount('#user-dashboard');
-createApp(AdminUsers).mount('#admin-users');
+createApp(AdminManageUsers).mount('#admin-manage-users');
 createApp(UserLogin).mount('#user-login');
 createApp(Footer).mount('#footer');

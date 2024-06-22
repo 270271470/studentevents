@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-full">
-    <div class="bg-gray-900 pb-32">
-      <Disclosure as="nav" class="bg-gray-900" v-slot="{ open }">
+    <div class="bg-slate-800 pb-16">
+      <Disclosure as="nav" class="bg-slate-800" v-slot="{ open }">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div class="border-b border-gray-700">
+          <div class="border-b border-slate-700">
             <div class="flex h-16 items-center justify-between px-4 sm:px-0">
               <div class="flex items-center">
                 <div class="flex-shrink-0">
