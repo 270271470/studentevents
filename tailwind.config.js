@@ -5,7 +5,8 @@ module.exports = {
     './src/**/*.vue',          // Vue components directory
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [
       require('@tailwindcss/forms')

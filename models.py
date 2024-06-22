@@ -21,3 +21,20 @@ class User(db.Model):
     about = db.Column(db.Text)  # New field
     password_hash = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(10), default='user')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'email': self.email,
+            'mobile_number': self.mobile_number,
+            'address1': self.address1,
+            'address2': self.address2,
+            'suburb': self.suburb,
+            'city': self.city,
+            'country': self.country,
+            'postal_code': self.postal_code,
+            'role': self.role
+        }

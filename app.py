@@ -96,9 +96,44 @@ def user_dashboard():
         return redirect(url_for('login'))
 
 
-@app.route('/admin/dash_users')
-def admin_dash_users():
-    return render_template('admin/dash_users.html')  # Render admin dash template
+@app.route('/admin/admin_manage_users')
+def admin_manage_users():
+    return render_template('admin/admin_manage_users.html')  # Render admin manage users
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    return jsonify([user.to_dict() for user in users])
+
+@app.route('/api/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    data = request.get_json()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    user.firstname = data.get('firstname', user.firstname)
+    user.lastname = data.get('lastname', user.lastname)
+    user.username = data.get('username', user.username)
+    user.email = data.get('email', user.email)
+    user.mobile_number = data.get('mobile_number', user.mobile_number)
+    user.address1 = data.get('address1', user.address1)
+    user.address2 = data.get('address2', user.address2)
+    user.suburb = data.get('suburb', user.suburb)
+    user.city = data.get('city', user.city)
+    user.country = data.get('country', user.country)
+    user.postal_code = data.get('postal_code', user.postal_code)
+    user.role = data.get('role', user.role)
+    db.session.commit()
+    return jsonify(user.to_dict())
+
+@app.route('/api/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"message": "User deleted"})
 
 
 # Run the Flask application
