@@ -100,10 +100,12 @@ def user_dashboard():
 def admin_manage_users():
     return render_template('admin/admin_manage_users.html')  # Render admin manage users
 
+
 @app.route('/api/users', methods=['GET'])
 def get_users():
     users = User.query.all()
     return jsonify([user.to_dict() for user in users])
+
 
 @app.route('/api/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
@@ -126,6 +128,7 @@ def update_user(user_id):
     db.session.commit()
     return jsonify(user.to_dict())
 
+
 @app.route('/api/users/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
     user = User.query.get(user_id)
@@ -134,6 +137,27 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return jsonify({"message": "User deleted"})
+
+
+@app.route('/api/current_user')
+def get_current_user():
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        return jsonify({'name': user.firstname}), 200
+    return jsonify({'error': 'Unauthorized'}), 401
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return jsonify({'message': 'Logged out successfully'}), 200
+
+
+@app.route('/api/user_count', methods=['GET'])
+def get_user_count():
+    # Count users in db
+    user_count = User.query.count()
+    return jsonify({'count': user_count})
 
 
 # Run the Flask application
