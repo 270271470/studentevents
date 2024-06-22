@@ -127,43 +127,48 @@ export default {
       error: ''
     };
   },
-methods: {
-  async register() {
-    this.error = '';
-    if (this.password !== this.confirmPassword) {
-      this.error = "Passwords do not match!";
-      return;
-    }
+  methods: {
+    async register() {
+      this.error = '';
+      if (this.password !== this.confirmPassword) {
+        this.error = "Passwords do not match!";
+        return;
+      }
 
-    const response = await fetch('/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.username,
-        about: this.about,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        country: this.country,
-        streetAddress: this.streetAddress,
-        city: this.city,
-        region: this.region,
-        postalCode: this.postalCode,
-        password: this.password
-      })
-    });
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.username,
+            about: this.about,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            country: this.country,
+            streetAddress: this.streetAddress,
+            city: this.city,
+            region: this.region,
+            postalCode: this.postalCode,
+            password: this.password
+          })
+        });
 
-    const result = await response.json();
-    if (response.ok) {
-      alert("Registration successful!");
-      window.location.href = '/';
-    } else {
-      this.error = result.error || "Registration failed!";
+        const result = await response.json();
+        if (response.ok) {
+          alert("Registration successful!");
+          window.location.href = '/';
+        } else {
+          this.error = result.error || "Registration failed!";
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        this.error = "An error occurred during registration.";
+      }
     }
   }
-}
 };
 </script>
 
