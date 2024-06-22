@@ -69,25 +69,25 @@
         <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
           <header class="py-10">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h1 class="text-3xl font-bold tracking-tight text-slate-800">Admin Dashboard</h1>
+              <h1 class="text-3xl font-bold tracking-tight text-gray-500">Admin Dashboard</h1>
             </div>
           </header>
           <div class="mb-10">
             <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
               <li class="col-span-1 flex rounded-md shadow-sm h-32">
-                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-violet-700 text-sm font-medium text-white">
-                  <UserIcon class="h-6 w-6" aria-hidden="true" />
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-violet-700 text-sm font-medium text-violet-200">
+                  <UserIcon class="h-8 w-8" aria-hidden="true" />
                 </div>
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-violet-500 bg-violet-500">
                   <div class="flex-1 truncate px-4 py-2">
-                    <a href="/admin/admin_manage_users" class="font-medium text-violet-100 hover:via-violet-100 text-xl">Manage Users</a>
+                    <a href="/admin/admin_manage_users" class="font-medium text-violet-100 hover:via-violet-100 text-lg">Manage Users</a>
                     <p class="text-violet-200 text-sm">{{ userCount }} Users</p>
                   </div>
                 </div>
               </li>
               <li class="col-span-1 flex rounded-md shadow-sm">
-                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-rose-700 text-sm font-medium text-white">
-                  <ClockIcon class="h-6 w-6" aria-hidden="true" />
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-rose-700 text-sm font-medium text-rose-200">
+                  <ClockIcon class="h-8 w-8" aria-hidden="true" />
                 </div>
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-rose-500 bg-rose-500">
                   <div class="flex-1 truncate px-4 py-2">
@@ -97,8 +97,8 @@
                 </div>
               </li>
               <li class="col-span-1 flex rounded-md shadow-sm">
-                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-cyan-700 text-sm font-medium text-white">
-                  <EyeIcon class="h-6 w-6" aria-hidden="true" />
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-cyan-700 text-sm font-medium text-cyan-200">
+                  <EyeIcon class="h-8 w-8" aria-hidden="true" />
                 </div>
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-cyan-500 bg-cyan-500">
                   <div class="flex-1 truncate px-4 py-2">
@@ -108,12 +108,12 @@
                 </div>
               </li>
               <li class="col-span-1 flex rounded-md shadow-sm">
-                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-teal-700 text-sm font-medium text-white">
-                  <CogIcon class="h-6 w-6" aria-hidden="true" />
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-teal-700 text-sm font-medium text-teal-200">
+                  <CogIcon class="h-8 w-8" aria-hidden="true" />
                 </div>
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-teal-500 bg-teal-500">
                   <div class="flex-1 truncate px-4 py-2">
-                    <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-teal-100 lg">Manage Events</a>
+                    <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-teal-100 text-lg">Manage Events</a>
                     <p class="text-teal-200 text-sm">8 Events</p>
                   </div>
                 </div>
