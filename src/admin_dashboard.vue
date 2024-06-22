@@ -15,29 +15,11 @@
               </div>
               <div class="hidden md:block">
                 <div class="ml-4 flex items-center md:ml-6">
-                  <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span class="absolute -inset-1.5" />
-                    <span class="sr-only">View notifications</span>
-                    <BellIcon class="h-6 w-6" aria-hidden="true" />
+                  <span class="text-gray-400">Welcome back, {{ userName }}</span>
+                  <button @click="logout" class="ml-4 bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span class="sr-only">Logout</span>
+                    <ArrowLeftOnRectangleIcon class="h-6 w-6" aria-hidden="true" />
                   </button>
-
-                  <!-- Profile dropdown -->
-                  <Menu as="div" class="relative ml-3">
-                    <div>
-                      <MenuButton class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span class="absolute -inset-1.5" />
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" :src="user.imageUrl" alt="" />
-                      </MenuButton>
-                    </div>
-                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                      <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                          <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
-                        </MenuItem>
-                      </MenuItems>
-                    </transition>
-                  </Menu>
                 </div>
               </div>
               <div class="-mr-2 flex md:hidden">
@@ -85,60 +67,59 @@
     <main class="-mt-10">
       <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
-
-      <header class="py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold tracking-tight text-slate-800">Admin Dashboard</h1>
-        </div>
-      </header>
-
-
-<div class="mb-10">
-  <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-    <li class="col-span-1 flex rounded-md shadow-sm h-32">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-violet-700 text-sm font-medium text-fuchsia-950"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-violet-500">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="/admin/admin_manage_users" class="font-medium text-violet-100 hover:via-violet-100 text-xl">Manage Users</a>
-          <p class="text-violet-200 text-sm">16 Users</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-rose-700 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-rose-500">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-rose-100 hover:text-rose-100 text-lg">Pending Bookings</a>
-          <p class="text-rose-200 text-sm">12 Pending</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-cyan-700 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-cyan-500">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-cyan-100 hover:text-cyan-100 text-lg">View All Bookings</a>
-          <p class="text-cyan-200 text-sm">16 Active Booking</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-teal-700 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-teal-500">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-teal-100 hover:text-teal-100 lg">Manage Events</a>
-          <p class="text-teal-200 text-sm">8 Events</p>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
-
-
-
-
-
-
+          <header class="py-10">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h1 class="text-3xl font-bold tracking-tight text-slate-800">Admin Dashboard</h1>
+            </div>
+          </header>
+          <div class="mb-10">
+            <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+              <li class="col-span-1 flex rounded-md shadow-sm h-32">
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-violet-700 text-sm font-medium text-white">
+                  <UserIcon class="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-violet-500 bg-violet-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/admin/admin_manage_users" class="font-medium text-violet-100 hover:via-violet-100 text-xl">Manage Users</a>
+                    <p class="text-violet-200 text-sm">{{ userCount }} Users</p>
+                  </div>
+                </div>
+              </li>
+              <li class="col-span-1 flex rounded-md shadow-sm">
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-rose-700 text-sm font-medium text-white">
+                  <ClockIcon class="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-rose-500 bg-rose-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/admin/admin_pending_bookings" class="font-medium text-rose-100 hover:text-rose-100 text-lg">Pending Bookings</a>
+                    <p class="text-rose-200 text-sm">12 Pending</p>
+                  </div>
+                </div>
+              </li>
+              <li class="col-span-1 flex rounded-md shadow-sm">
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-cyan-700 text-sm font-medium text-white">
+                  <EyeIcon class="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-cyan-500 bg-cyan-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/admin/view_all_bookings" class="font-medium text-cyan-100 hover:text-cyan-100 text-lg">View All Bookings</a>
+                    <p class="text-cyan-200 text-sm">16 Active Booking</p>
+                  </div>
+                </div>
+              </li>
+              <li class="col-span-1 flex rounded-md shadow-sm">
+                <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-teal-700 text-sm font-medium text-white">
+                  <CogIcon class="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-teal-500 bg-teal-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-teal-100 lg">Manage Events</a>
+                    <p class="text-teal-200 text-sm">8 Events</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </main>
@@ -147,19 +128,42 @@
 
 
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { Bars3Icon, BellIcon, ArrowLeftOnRectangleIcon, XMarkIcon, UserIcon, ClockIcon, EyeIcon, CogIcon } from '@heroicons/vue/24/outline';
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+const userName = ref(''); // Username will be set after fetching from API
+const userCount = ref(0); // Variable to store the user count
 
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+const fetchUserName = async () => {
+  try {
+    const response = await fetch('/api/current_user');
+    const data = await response.json();
+    userName.value = data.name;
+  } catch (error) {
+    console.error('Failed to fetch user name:', error);
+  }
+};
+
+const fetchUserCount = async () => {
+  try {
+    const response = await fetch('/api/user_count');
+    const data = await response.json();
+    userCount.value = data.count; // Update the user count
+  } catch (error) {
+    console.error('Failed to fetch user count:', error);
+  }
+};
+
+const logout = async () => {
+  try {
+    await fetch('/logout', { method: 'POST' });
+    window.location.href = '/';
+  } catch (error) {
+    console.error('Failed to logout:', error);
+  }
+};
+
+fetchUserName();  // Fetch username when component is mounted
+fetchUserCount(); // Fetch user count when component is mounted
 </script>
