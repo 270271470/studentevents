@@ -6,35 +6,20 @@
           <div class="border-b border-slate-700">
             <div class="flex h-16 items-center justify-between px-4 sm:px-0">
               <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <img class="h-5" src="http://studentevents.nz/assets/StudentEvents.svg?color=indigo&shade=500" alt="Student Events" />
+                <div class="flex lg:flex-1">
+                  <a href="/user/dashboard" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Student Events</span>
+                    <img class="h-10 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
+                  </a>
                 </div>
               </div>
               <div class="hidden md:block">
                 <div class="ml-4 flex items-center md:ml-6">
-                  <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span class="absolute -inset-1.5" />
-                    <span class="sr-only">View notifications</span>
-                    <BellIcon class="h-6 w-6" aria-hidden="true" />
+                  <span class="text-gray-400">Welcome back, {{ userName }}</span>
+                  <button @click="logout" class="ml-4 bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span class="sr-only">Logout</span>
+                    <ArrowLeftOnRectangleIcon class="h-6 w-6" aria-hidden="true" />
                   </button>
-
-                  <!-- Profile dropdown -->
-                  <Menu as="div" class="relative ml-3">
-                    <div>
-                      <MenuButton class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span class="absolute -inset-1.5" />
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" :src="user.imageUrl" alt="" />
-                      </MenuButton>
-                    </div>
-                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                      <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                          <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{ item.name }}</a>
-                        </MenuItem>
-                      </MenuItems>
-                    </transition>
-                  </Menu>
                 </div>
               </div>
               <div class="-mr-2 flex md:hidden">
@@ -49,112 +34,126 @@
             </div>
           </div>
         </div>
-
-        <DisclosurePanel class="border-b border-gray-700 md:hidden">
-          <div class="space-y-1 px-2 py-3 sm:px-3">
-            <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
-          </div>
-          <div class="border-t border-gray-700 pb-3 pt-4">
-            <div class="flex items-center px-5">
-              <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" :src="user.imageUrl" alt="" />
-              </div>
-              <div class="ml-3">
-                <div class="text-base font-medium leading-none text-white">{{ user.name }}</div>
-                <div class="text-sm font-medium leading-none text-gray-400">{{ user.email }}</div>
-              </div>
-              <button type="button" class="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                <span class="absolute -inset-1.5" />
-                <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div class="mt-3 space-y-1 px-2">
-              <DisclosureButton v-for="item in userNavigation" :key="item.name" as="a" :href="item.href" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">{{ item.name }}</DisclosureButton>
-            </div>
-          </div>
-        </DisclosurePanel>
       </Disclosure>
+
+      <br><br>
+      <!-- Breadcrumb Navigation -->
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol role="list" class="flex items-center space-x-4 ml-5">
+            <li>
+              <div>
+                <a href="/user/dashboard" class="text-slate-400 hover:text-slate-50">
+                  <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="sr-only">User Dashboard</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="h-5 w-5 flex-shrink-0 text-slate-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a href="/user/dashboard" class="ml-4 text-sm font-medium text-slate-400 hover:text-slate-50">User Dashboard</a>
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
     </div>
 
     <main class="-mt-10">
       <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
-
-      <header class="py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-500">User Dashboard</h1>
-        </div>
-      </header>
-
-
-<div class="mb-10">
-  <h2 class="text-xl font-medium text-gray-500 mt-5 mb-5">Quick Links</h2>
-  <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-    <li class="col-span-1 flex rounded-md shadow-sm h-32">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-pink-600 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-gray-900 hover:text-gray-600 text-lg">Manage Booking</a>
-          <p class="text-gray-500 text-sm">16 Bookings</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-purple-600 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-gray-900 hover:text-gray-600 text-lg">Search Events</a>
-          <p class="text-gray-500 text-sm">54 Upcoming Events</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-yellow-500 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-gray-900 hover:text-gray-600 text-lg">Get Help</a>
-          <p class="text-gray-500 text-sm">Contact Us</p>
-        </div>
-      </div>
-    </li>
-    <li class="col-span-1 flex rounded-md shadow-sm">
-      <div class="flex w-16 flex-shrink-0 items-center justify-center rounded-l-md bg-green-500 text-sm font-medium text-white"></div>
-      <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
-        <div class="flex-1 truncate px-4 py-2">
-          <a href="#" class="font-medium text-gray-900 hover:text-gray-600 lg">Update Personal</a>
-          <p class="text-gray-500 text-sm">Details</p>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
-
-
-
-
-
-
+          <header class="py-10">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h1 class="text-3xl font-bold tracking-tight text-gray-500">User Dashboard</h1>
+            </div>
+          </header>
+          <div class="mb-10">
+            <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+              <li class="col-span-1 flex rounded-md shadow-sm h-32">
+                <div class="flex w-28 flex-shrink-0 items-center justify-end rounded-l-md bg-violet-500 text-sm font-bold text-violet-300">
+                  <CogIcon class="h-10 w-10" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-violet-500 bg-violet-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/user/user_manage_booking" class="font-medium text-violet-100 hover:via-violet-100 text-xl">Manage Booking</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-span-1 flex rounded-md shadow-sm">
+                <div class="flex w-28 flex-shrink-0 items-center justify-end rounded-l-md bg-indigo-500 text-sm font-bold text-indigo-300">
+                  <MagnifyingGlassIcon class="h-10 w-10" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-indigo-500 bg-indigo-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/events" class="font-medium text-indigo-100 hover:text-indigo-100 text-xl">Find An Event</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-span-1 flex rounded-md shadow-sm">
+                <div class="flex w-28 flex-shrink-0 items-center justify-end rounded-l-md bg-rose-500 text-sm font-bold text-rose-300">
+                  <UserIcon class="h-10 w-10" aria-hidden="true" />
+                </div>
+                <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-rose-500 bg-rose-500">
+                  <div class="flex-1 truncate px-4 py-2">
+                    <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-amber-100 text-xl">Contact Information</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </main>
+  </div>
+  <div class="bg-gray-100 px-1 py-1 sm:py-1 lg:px-1">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-base font-bold leading-7 text-red-500">Need Help?</p>
+      <a href="/support-center" class="mt-2 flex items-center justify-center">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-700 sm:text-3xl">Visit Support Center</h2>
+        <img class="ml-2 h-12 w-12" src="https://www.studentevents.nz/assets/life-saver.svg" alt="Life Preserver Icon">
+      </a>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import {
+  ArrowLeftOnRectangleIcon,
+  Bars3Icon,
+  BellIcon,
+  ClockIcon, CogIcon, MagnifyingGlassIcon,
+  EyeIcon,
+  UserIcon,
+  XMarkIcon
+} from '@heroicons/vue/24/outline'
+import {ref} from "vue";
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+const userName = ref('');  // Username will be set after fetching from API
 
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+const fetchUserName = async () => {
+  try {
+    const response = await fetch('/api/current_user');
+    const data = await response.json();
+    userName.value = data.name;
+  } catch (error) {
+    console.error('Failed to fetch user name:', error);
+  }
+};
+
+const logout = async () => {
+  try {
+    await fetch('/logout', { method: 'POST' });
+    window.location.href = '/';
+  } catch (error) {
+    console.error('Failed to logout:', error);
+  }
+};
+
+fetchUserName();  // Fetch username when component is mounted
 </script>
