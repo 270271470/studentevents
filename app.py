@@ -4,7 +4,7 @@ from db_utils import get_user_by_username
 from config import Config
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, NoResultFound
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -20,6 +20,10 @@ migrate = Migrate(app, db)  # Initialize Flask-Migrate
 @app.route('/')
 def welcome_home():
     return render_template('index.html')  # Render the home page template
+
+@app.route('/support-center')
+def support_center():
+    return render_template('support-center.html')  # Render the support center template
 
 
 # Define the route for user registration
@@ -96,6 +100,64 @@ def user_dashboard():
         return redirect(url_for('login'))
 
 
+@app.route('/api/get_user_info', methods=['GET'])
+def get_user_info():
+    user_id = request.args.get('user_id')
+    try:
+        user = User.query.filter_by(id=user_id).one()
+        return jsonify({
+            'id': user.id,
+            'firstname': user.firstname,
+            'lastname': user.lastname,
+            'username': user.username,
+            'email': user.email,
+            'mobile_number': user.mobile_number,
+            'address1': user.address1,
+            'address2': user.address2,
+            'suburb': user.suburb,
+            'city': user.city,
+            'country': user.country,
+            'postal_code': user.postal_code,
+        })
+    except NoResultFound:
+        return jsonify({'error': 'User not found'}), 404
+
+
+@app.route('/api/update_user_info', methods=['POST'])
+def update_user_info():
+    data = request.json
+    user_id = data.get('id')
+    try:
+        user = User.query.filter_by(id=user_id).one()
+
+        if User.query.filter(User.email == data['email'], User.id != user_id).first():
+            return jsonify({'error': 'Email already exists'}), 400
+        if User.query.filter(User.username == data['username'], User.id != user_id).first():
+            return jsonify({'error': 'Username already exists'}), 400
+
+        user.firstname = data['firstname']
+        user.lastname = data['lastname']
+        user.username = data['username']
+        user.email = data['email']
+        user.mobile_number = data['mobile_number']
+        user.address1 = data['address1']
+        user.address2 = data['address2']
+        user.suburb = data['suburb']
+        user.city = data['city']
+        user.country = data['country']
+        user.postal_code = data['postal_code']
+
+        db.session.commit()
+        return jsonify({'success': 'User updated successfully'})
+    except NoResultFound:
+        return jsonify({'error': 'User not found'}), 404
+
+
+@app.route('/user/user_update_info')
+def user_update_info():
+    return render_template('user/user_update_info.html')  # Render admin manage users
+
+
 @app.route('/admin/admin_manage_users')
 def admin_manage_users():
     return render_template('admin/admin_manage_users.html')  # Render admin manage users
@@ -139,12 +201,30 @@ def delete_user(user_id):
     return jsonify({"message": "User deleted"})
 
 
-@app.route('/api/current_user')
+@app.route('/api/current_user', methods=['GET'])
 def get_current_user():
-    if 'user_id' in session:
-        user = User.query.get(session['user_id'])
-        return jsonify({'name': user.firstname}), 200
-    return jsonify({'error': 'Unauthorized'}), 401
+    user_id = session.get('user_id')  # Get user_id from session
+    if not user_id:
+        return jsonify({'error': 'User not logged in'}), 401
+
+    user = User.query.get(user_id)
+    if user:
+        return jsonify({
+            'id': user.id,
+            'firstname': user.firstname,
+            'lastname': user.lastname,
+            'username': user.username,
+            'email': user.email,
+            'mobile_number': user.mobile_number,
+            'address1': user.address1,
+            'address2': user.address2,
+            'suburb': user.suburb,
+            'city': user.city,
+            'country': user.country,
+            'postal_code': user.postal_code,
+        })
+    else:
+        return jsonify({'error': 'User not found'}), 404
 
 
 @app.route('/logout', methods=['POST'])

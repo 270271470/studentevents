@@ -9,7 +9,7 @@
                 <div class="flex lg:flex-1">
                   <a href="/admin/dashboard" class="-m-1.5 p-1.5">
                     <span class="sr-only">Student Events</span>
-                    <img class="h-10 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
+                    <img class="h-9 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
                   </a>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export default {
       try {
         const response = await fetch('/api/current_user');
         const data = await response.json();
-        this.userName = data.name;
+        this.userName = data.firstname;
       } catch (error) {
         console.error('Failed to fetch user name:', error);
       }
