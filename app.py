@@ -21,6 +21,17 @@ migrate = Migrate(app, db)  # Initialize Flask-Migrate
 def welcome_home():
     return render_template('index.html')  # Render the home page template
 
+
+@app.route('/about-us')
+def about_us():
+    return render_template('about-us.html')  # Render about-us tpl
+
+
+@app.route('/contact-us')
+def contact_us():
+    return render_template('contact-us.html')  # Render about-us tpl
+
+
 @app.route('/support-center')
 def support_center():
     return render_template('support-center.html')  # Render the support center template
