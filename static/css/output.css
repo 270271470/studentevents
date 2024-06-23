@@ -1043,10 +1043,6 @@ select {
   height: 4rem;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
 .h-32 {
   height: 8rem;
 }
@@ -1754,12 +1750,12 @@ select {
   padding-left: 0.25rem;
 }
 
-.pl-3 {
-  padding-left: 0.75rem;
+.pl-12 {
+  padding-left: 3rem;
 }
 
-.pl-8 {
-  padding-left: 2rem;
+.pl-3 {
+  padding-left: 0.75rem;
 }
 
 .pr-12 {
@@ -2674,9 +2670,9 @@ select {
     padding-bottom: 0.25rem;
   }
 
-  .lg\:py-56 {
-    padding-top: 14rem;
-    padding-bottom: 14rem;
+  .lg\:py-44 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
   }
 
   .lg\:pb-8 {
