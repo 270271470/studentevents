@@ -9,7 +9,7 @@
                 <div class="flex lg:flex-1">
                   <a href="/admin/dashboard" class="-m-1.5 p-1.5">
                     <span class="sr-only">Student Events</span>
-                    <img class="h-10 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
+                    <img class="h-9 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
                   </a>
                 </div>
               </div>
@@ -128,7 +128,7 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { Bars3Icon, BellIcon, ArrowLeftOnRectangleIcon, XMarkIcon, UserIcon, ClockIcon, EyeIcon, CogIcon } from '@heroicons/vue/24/outline';
 
@@ -139,11 +139,16 @@ const fetchUserName = async () => {
   try {
     const response = await fetch('/api/current_user');
     const data = await response.json();
-    userName.value = data.name;
+    if (response.ok) {
+      userName.value = data.firstname;
+    } else {
+      console.error('Failed to fetch user name:', data.error);
+    }
   } catch (error) {
     console.error('Failed to fetch user name:', error);
   }
 };
+
 
 const fetchUserCount = async () => {
   try {
@@ -164,6 +169,7 @@ const logout = async () => {
   }
 };
 
-fetchUserName();  // Fetch username when component is mounted
-fetchUserCount(); // Fetch user count when component is mounted
+fetchUserName();
+fetchUserCount();
+
 </script>

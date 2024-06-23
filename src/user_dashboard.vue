@@ -9,7 +9,7 @@
                 <div class="flex lg:flex-1">
                   <a href="/user/dashboard" class="-m-1.5 p-1.5">
                     <span class="sr-only">Student Events</span>
-                    <img class="h-10 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
+                    <img class="h-9 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
                   </a>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-rose-500 bg-rose-500">
                   <div class="flex-1 truncate px-4 py-2">
-                    <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-amber-100 text-xl">Contact Information</a>
+                    <a href="/user/user_update_info" class="font-medium text-teal-100 hover:text-amber-100 text-xl">Contact Information</a>
                   </div>
                 </div>
               </li>
@@ -140,7 +140,7 @@ const fetchUserName = async () => {
   try {
     const response = await fetch('/api/current_user');
     const data = await response.json();
-    userName.value = data.name;
+    userName.value = data.firstname;
   } catch (error) {
     console.error('Failed to fetch user name:', error);
   }
