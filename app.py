@@ -27,6 +27,16 @@ def about_us():
     return render_template('about-us.html')  # Render about-us tpl
 
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')  # Render privacy tpl
+
+
+@app.route('/terms-of-service')
+def terms_of_service():
+    return render_template('terms-of-service.html')  # Render TOS tpl
+
+
 @app.route('/contact-us')
 def contact_us():
     return render_template('contact-us.html')  # Render about-us tpl
