@@ -29,3 +29,4 @@ class User(db.Model):
 # Method to hash and set the user's password
 def set_password(self, password):
     self.password_hash = generate_password_hash(password)
+
