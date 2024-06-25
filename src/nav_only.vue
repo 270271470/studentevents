@@ -1,10 +1,10 @@
 <template>
-    <header class="bg-gray-900">
+    <header class="bg-slate-800">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
           <a href="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Student Events</span>
-            <img class="h-8 w-auto" src="http://studentevents.nz/assets/StudentEvents.svg?color=indigo&shade=500" alt="" />
+            <img class="h-9 w-auto ml-5" src="http://studentevents.nz/assets/logo.svg?color=indigo&shade=500" alt="" />
           </a>
         </div>
         <div class="flex lg:hidden">
@@ -19,8 +19,11 @@
               {{ item.name }}
             </a>
           </div>
-          <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
+          <button v-if="!isLoginPage" @click="navigateTo('/login')" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
             Log in
+          </button>
+          <button v-if="!isRegisterPage" @click="navigateTo('/register')" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full">
+            Register
           </button>
         </div>
       </nav>
@@ -53,14 +56,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Dialog, DialogPanel } from '@headlessui/vue'
-import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { ref, computed } from 'vue'
+import { Bars3Icon } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: 'About Us', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'About Us', href: '/about-us' },
+  { name: 'Contact Us', href: '/contact-us' },
 ]
 
 const mobileMenuOpen = ref(false)
+
+// Computed property to get the current URL path
+const currentPath = computed(() => window.location.pathname)
+
+// Computed properties to check if the current URL matches /login or /register
+const isLoginPage = computed(() => currentPath.value === '/login')
+const isRegisterPage = computed(() => currentPath.value === '/register')
+
+// Method to navigate to a different route
+const navigateTo = (path) => {
+  window.location.href = path
+}
 </script>

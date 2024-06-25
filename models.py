@@ -1,17 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash
 
 # Initialize SQLAlchemy for db interactions
 db = SQLAlchemy()
-
-class Events(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    category = db.Column(db.String(50), nullable=False)
 
 
 # Define the User model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)  # New field
     firstname = db.Column(db.String(50), nullable=False)
     lastname = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -22,11 +18,24 @@ class User(db.Model):
     city = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     postal_code = db.Column(db.String(10), nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False)  # Increased length to 255
+    about = db.Column(db.Text)  # New field
+    password_hash = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(10), default='user')
 
-
-# Method to hash and set the user's password
-def set_password(self, password):
-    self.password_hash = generate_password_hash(password)
-
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'email': self.email,
+            'mobile_number': self.mobile_number,
+            'address1': self.address1,
+            'address2': self.address2,
+            'suburb': self.suburb,
+            'city': self.city,
+            'country': self.country,
+            'postal_code': self.postal_code,
+            'role': self.role
+        }
+      

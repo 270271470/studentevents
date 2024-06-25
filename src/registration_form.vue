@@ -1,186 +1,375 @@
 <template>
-  <div class="bg-white">
-    <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight text-center text-gray-900 sm:text-4xl">Registration</h2>
-      <div class="mx-auto max-w-2xl mt-20">
-        <form @submit.prevent="register">
-          <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-12">
-              <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-4">
-                  <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
-                  <div class="mt-2">
-                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                      <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">example/</span>
-                      <input v-model="username" type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="janesmith" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-span-full">
-                  <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
-                  <div class="mt-2">
-                    <textarea v-model="about" id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-                  </div>
-                  <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
-                </div>
+  <div class="bg-gray-100 min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
+      <h2 class="mt-6 text-center text-3xl font-medium text-gray-500">
+        User Registration
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        <!-- Add any additional text or instructions here -->
+      </p>
+    </div>
+
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+      <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+        <form @submit.prevent="register" class="space-y-6">
+          <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">
+              Username
+            </label>
+            <div class="mt-1">
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                v-model="username"
+                required
+                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="about" class="block text-sm font-medium text-gray-700">
+              About
+            </label>
+            <div class="mt-1">
+              <textarea
+                id="about"
+                name="about"
+                rows="3"
+                v-model="about"
+                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Write a few sentences about yourself."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+            <div>
+              <label for="firstname" class="block text-sm font-medium text-gray-700">
+                First name
+              </label>
+              <div class="mt-1">
+                <input
+                  id="firstname"
+                  name="firstname"
+                  type="text"
+                  autocomplete="given-name"
+                  v-model="firstname"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
               </div>
             </div>
-            <div class="border-b border-gray-900/10 pb-12">
-              <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-              <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div class="sm:col-span-3">
-                  <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
-                  <div class="mt-2">
-                    <input v-model="firstName" type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-3">
-                  <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
-                  <div class="mt-2">
-                    <input v-model="lastName" type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-4">
-                  <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                  <div class="mt-2">
-                    <input v-model="email" id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-3">
-                  <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
-                  <div class="mt-2">
-                    <select v-model="country" id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                      <option>New Zealand</option>
-                      <option>Auckland</option>
-                      <option>Wellington</option>
-                      <option>Christchurch</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
-                  <div class="mt-2">
-                    <input v-model="streetAddress" type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-2 sm:col-start-1">
-                  <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
-                  <div class="mt-2">
-                    <input v-model="city" type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
-                  <div class="mt-2">
-                    <input v-model="region" type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP / Postal code</label>
-                  <div class="mt-2">
-                    <input v-model="postalCode" type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                  <div class="mt-2">
-                    <input v-model="password" type="password" name="password" id="password" autocomplete="new-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label for="confirm-password" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
-                  <div class="mt-2">
-                    <input v-model="confirmPassword" type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                  </div>
-                </div>
+
+            <div>
+              <label for="lastname" class="block text-sm font-medium text-gray-700">
+                Last name
+              </label>
+              <div class="mt-1">
+                <input
+                  id="lastname"
+                  name="lastname"
+                  type="text"
+                  autocomplete="family-name"
+                  v-model="lastname"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
               </div>
             </div>
           </div>
-          <div class="mt-6 flex justify-center items-center gap-x-6">
-            <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
+
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">
+                Email address
+              </label>
+              <div class="mt-1">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  v-model="email"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="mobile_number" class="block text-sm font-medium text-gray-700">
+                Mobile Number
+              </label>
+              <div class="mt-1">
+                <input
+                  id="mobile_number"
+                  name="mobile_number"
+                  type="tel"
+                  autocomplete="tel"
+                  v-model="mobile_number"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="address1" class="block text-sm font-medium text-gray-700">
+              Address 1
+            </label>
+            <div class="mt-1">
+              <input
+                id="address1"
+                name="address1"
+                type="text"
+                autocomplete="street-address"
+                v-model="address1"
+                required
+                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="address2" class="block text-sm font-medium text-gray-700">
+              Address 2
+            </label>
+            <div class="mt-1">
+              <input
+                id="address2"
+                name="address2"
+                type="text"
+                autocomplete="address-line2"
+                v-model="address2"
+                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="suburb" class="block text-sm font-medium text-gray-700">
+              Suburb
+            </label>
+            <div class="mt-1">
+              <input
+                id="suburb"
+                name="suburb"
+                type="text"
+                autocomplete="address-line3"
+                v-model="suburb"
+                class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+            <div>
+              <label for="city" class="block text-sm font-medium text-gray-700">
+                City
+              </label>
+              <div class="mt-1">
+                <input
+                  id="city"
+                  name="city"
+                  type="text"
+                  autocomplete="address-level2"
+                  v-model="city"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="country" class="block text-sm font-medium text-gray-700">
+                Country
+              </label>
+              <div class="mt-1">
+                <input
+                  id="country"
+                  name="country"
+                  type="text"
+                  autocomplete="country"
+                  v-model="country"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+            <div>
+              <label for="postal_code" class="block text-sm font-medium text-gray-700">
+                Postal Code
+              </label>
+              <div class="mt-1">
+                <input
+                  id="postal_code"
+                  name="postal_code"
+                  type="text"
+                  autocomplete="postal-code"
+                  v-model="postal_code"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700">
+                Password
+              </label>
+              <div class="mt-1">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  v-model="password"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="confirm_password" class="block text-sm font-medium text-gray-700">
+                Confirm Password
+              </label>
+              <div class="mt-1">
+                <input
+                  id="confirm_password"
+                  name="confirm_password"
+                  type="password"
+                  autocomplete="new-password"
+                  v-model="confirm_password"
+                  required
+                  class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Register
+            </button>
+          </div>
+
+          <div v-if="errorMessage" class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            <span class="block sm:inline">{{ errorMessage }}</span>
+          </div>
+
+          <div v-if="successMessage" class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            <span class="block sm:inline">{{ successMessage }}</span>
           </div>
         </form>
-        <div v-if="error" class="mt-4 text-red-500">
-          {{ error }}
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue';
+import axios from 'axios';
+
 export default {
-  data() {
+  setup() {
+    const username = ref('');
+    const about = ref('');
+    const firstname = ref('');
+    const lastname = ref('');
+    const email = ref('');
+    const mobile_number = ref('');
+    const address1 = ref('');
+    const address2 = ref('');
+    const suburb = ref('');
+    const city = ref('');
+    const country = ref('');
+    const postal_code = ref('');
+    const password = ref('');
+    const confirm_password = ref('');
+    const errorMessage = ref('');
+    const successMessage = ref('');
+
+    const register = async () => {
+      if (password.value !== confirm_password.value) {
+        errorMessage.value = 'Passwords do not match';
+        return;
+      }
+
+      try {
+        const response = await axios.post('/register', {
+          username: username.value,
+          firstName: firstname.value,
+          lastName: lastname.value,
+          email: email.value,
+          mobile_number: mobile_number.value,
+          streetAddress: address1.value,
+          address2: address2.value,
+          suburb: suburb.value,
+          city: city.value,
+          country: country.value,
+          postalCode: postal_code.value,
+          about: about.value,
+          password: password.value,
+        });
+
+        if (response.data.error) {
+          errorMessage.value = response.data.error;
+        } else {
+          successMessage.value = 'Registration successful. You can now log in.';
+          // Clear the form
+          username.value = '';
+          about.value = '';
+          firstname.value = '';
+          lastname.value = '';
+          email.value = '';
+          mobile_number.value = '';
+          address1.value = '';
+          address2.value = '';
+          suburb.value = '';
+          city.value = '';
+          country.value = '';
+          postal_code.value = '';
+          password.value = '';
+          confirm_password.value = '';
+          errorMessage.value = '';
+        }
+      } catch (error) {
+        errorMessage.value = 'Failed to register. Please try again later.';
+      }
+    };
+
     return {
-      username: '',
-      about: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      country: '',
-      streetAddress: '',
-      city: '',
-      region: '',
-      postalCode: '',
-      password: '',
-      confirmPassword: '',
-      error: ''
+      username,
+      about,
+      firstname,
+      lastname,
+      email,
+      mobile_number,
+      address1,
+      address2,
+      suburb,
+      city,
+      country,
+      postal_code,
+      password,
+      confirm_password,
+      errorMessage,
+      successMessage,
+      register,
     };
   },
-methods: {
-  async register() {
-    this.error = '';
-    if (this.password !== this.confirmPassword) {
-      this.error = "Passwords do not match!";
-      return;
-    }
-
-    const response = await fetch('/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.username,
-        about: this.about,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        country: this.country,
-        streetAddress: this.streetAddress,
-        city: this.city,
-        region: this.region,
-        postalCode: this.postalCode,
-        password: this.password
-      })
-    });
-
-    const result = await response.json();
-    if (response.ok) {
-      alert("Registration successful!");
-      window.location.href = '/';
-    } else {
-      this.error = result.error || "Registration failed!";
-    }
-  }
-}
 };
 </script>
-
-<style scoped>
-.registration-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-input, button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-button {
-  background-color: #3490dc;
-  color: white;
-  border: none;
-}
-</style>
