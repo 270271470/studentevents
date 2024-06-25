@@ -38,3 +38,4 @@ class User(db.Model):
             'postal_code': self.postal_code,
             'role': self.role
         }
+      
