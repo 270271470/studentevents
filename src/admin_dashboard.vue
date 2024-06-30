@@ -92,7 +92,7 @@
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-rose-500 bg-rose-500">
                   <div class="flex-1 truncate px-4 py-2">
                     <a href="/admin/admin_pending_bookings" class="font-medium text-rose-100 hover:text-rose-100 text-lg">Pending Bookings</a>
-                    <p class="text-rose-200 text-sm">12 Pending</p>
+                    <p class="text-rose-200 text-sm">{{ pendingBookingsCount }} Pending</p>
                   </div>
                 </div>
               </li>
@@ -103,7 +103,7 @@
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-cyan-500 bg-cyan-500">
                   <div class="flex-1 truncate px-4 py-2">
                     <a href="/admin/view_all_bookings" class="font-medium text-cyan-100 hover:text-cyan-100 text-lg">View All Bookings</a>
-                    <p class="text-cyan-200 text-sm">16 Active Booking</p>
+                    <p class="text-cyan-200 text-sm">{{ activeBookingsCount }} Active Bookings</p>
                   </div>
                 </div>
               </li>
@@ -114,7 +114,7 @@
                 <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-teal-500 bg-teal-500">
                   <div class="flex-1 truncate px-4 py-2">
                     <a href="/admin/admin_manage_events" class="font-medium text-teal-100 hover:text-teal-100 text-lg">Manage Events</a>
-                    <p class="text-teal-200 text-sm">8 Events</p>
+                    <p class="text-violet-200 text-sm">{{ eventCount }} Events</p>
                   </div>
                 </div>
               </li>
@@ -133,7 +133,10 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { Bars3Icon, BellIcon, ArrowLeftOnRectangleIcon, XMarkIcon, UserIcon, ClockIcon, EyeIcon, CogIcon } from '@heroicons/vue/24/outline';
 
 const userName = ref(''); // Username will be set after fetching from API
-const userCount = ref(0); // Variable to store the user count
+const userCount = ref(0); // Var to store user count
+const eventCount = ref(0); // Var to store event count
+const pendingBookingsCount = ref(0); // Var to store pending bookings count
+const activeBookingsCount = ref(0); // Var to store active bookings count
 
 const fetchUserName = async () => {
   try {
@@ -149,7 +152,6 @@ const fetchUserName = async () => {
   }
 };
 
-
 const fetchUserCount = async () => {
   try {
     const response = await fetch('/api/user_count');
@@ -159,6 +161,38 @@ const fetchUserCount = async () => {
     console.error('Failed to fetch user count:', error);
   }
 };
+
+const fetchEventCount = async () => {
+  try {
+    const response = await fetch('/api/event_count');
+    const data = await response.json();
+    eventCount.value = data.count; // Update event count
+  } catch (error) {
+    console.error('Failed to fetch event count:', error);
+  }
+};
+
+
+const fetchPendingBookingsCount = async () => {
+  try {
+    const response = await fetch('/api/pending_bookings_count');
+    const data = await response.json();
+    pendingBookingsCount.value = data.count; // Update pending bookings count
+  } catch (error) {
+    console.error('Failed to fetch pending bookings count:', error);
+  }
+};
+
+const fetchActiveBookingsCount = async () => {
+  try {
+    const response = await fetch('/api/active_bookings_count');
+    const data = await response.json();
+    activeBookingsCount.value = data.count; // Update active bookings count
+  } catch (error) {
+    console.error('Failed to fetch active bookings count:', error);
+  }
+};
+
 
 const logout = async () => {
   try {
@@ -171,5 +205,8 @@ const logout = async () => {
 
 fetchUserName();
 fetchUserCount();
+fetchEventCount();
+fetchPendingBookingsCount();
+fetchActiveBookingsCount();
 
 </script>

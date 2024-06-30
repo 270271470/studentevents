@@ -4,9 +4,6 @@
       <h2 class="mt-6 text-center text-3xl font-medium text-gray-500">
         User Registration
       </h2>
-      <p class="mt-2 text-center text-sm text-gray-600">
-        <!-- Add any additional text or instructions here -->
-      </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">

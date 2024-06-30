@@ -78,7 +78,7 @@
         <div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
           <header class="py-10 mb-6 justify-center">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-              <h1 class="text-3xl font-bold tracking-tight text-gray-500">Update Your Information</h1>
+              <h1 class="text-3xl font-medium tracking-tight text-gray-500">Update Your Information</h1>
             </div>
           </header>
           <div class="mb-10">

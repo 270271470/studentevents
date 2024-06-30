@@ -22,14 +22,14 @@
           </div>
           <div>
             <a href="/register">
-              <button class="bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full">
+              <button class="bg-indigo-600 hover:bg-indigo-800 text-white font-semibold py-2 px-4 rounded">
                 Register
               </button>
             </a>
           </div>
           <div>
             <a href="/login">
-              <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
+              <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
                 Log in
                 </button>
             </a>
@@ -73,7 +73,7 @@
           <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Kia Ora! Your Gateway to Adventure and Learning</h1>
           <p class="mt-6 text-lg leading-8 text-gray-300">Discover a wide range of events designed to enrich your student life. From workshops and seminars to adventure clubs and social gatherings, there's something for everyone. Connect, learn, and grow with our exciting events.</p>
           <div class="mt-10 flex items-center justify-start gap-x-6">
-            <a href="#" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Start Exploring</a>
+            <a href="/events" class="rounded bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Start Exploring</a>
           </div>
         </div>
       </div>
