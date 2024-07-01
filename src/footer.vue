@@ -44,19 +44,6 @@
           </div>
         </div>
       </div>
-      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
-        <div>
-          <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
-          <p class="mt-2 text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent to your inbox weekly.</p>
-        </div>
-        <form @submit.prevent="handleSubscribe" class="mt-6 sm:flex sm:max-w-md lg:mt-0">
-          <label for="email-address" class="sr-only">Email address</label>
-          <input type="email" name="email-address" id="email-address" autocomplete="email" required="" class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email" v-model="email" />
-          <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-            <button type="submit" class="flex w-full items-center justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Subscribe</button>
-          </div>
-        </form>
-      </div>
       <div class="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
         <div class="flex space-x-6 md:order-2">
           <a v-for="item in navigation.social" :key="item.name" :href="item.href" class="text-gray-500 hover:text-gray-400">
@@ -119,15 +106,14 @@ const newsletterConfirm = ref(false)
 
 const navigation = {
   events: [
-    { name: 'Workshops', href: '/events' },
-    { name: 'Adventure', href: '/events' },
-    { name: 'Outdoor Seminars', href: '/events' },
-    { name: 'Clubs', href: '/events' },
+    { name: 'Workshops', href: '/events-workshops' },
+    { name: 'Adventure', href: '/events-adventure' },
+    { name: 'Outdoor Seminars', href: '/events-outdoor' },
+    { name: 'Clubs', href: '/events-clubs' },
   ],
   quicklinks: [
     { name: 'Featured Events', href: '/events' },
     { name: 'All Events', href: '/events' },
-    { name: 'Galleries', href: '/galleries' },
     { name: 'Newsletter', href: '#' },
   ],
   company: [
@@ -137,9 +123,6 @@ const navigation = {
   legal: [
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Terms of Service', href: '/terms-of-service' },
-  ],
-  social: [
-    // Add your social media links here
   ]
 }
 
