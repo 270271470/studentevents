@@ -827,8 +827,16 @@ select {
   right: 50%;
 }
 
+.right-48 {
+  right: 12rem;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-48 {
+  top: 12rem;
 }
 
 .top-\[calc\(100\%-13rem\)\] {
@@ -1114,6 +1122,10 @@ select {
 
 .h-6 {
   height: 1.5rem;
+}
+
+.h-64 {
+  height: 16rem;
 }
 
 .h-7 {
@@ -1446,12 +1458,6 @@ select {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2rem * var(--tw-space-x-reverse));
-  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2254,6 +2260,10 @@ select {
 
 .opacity-20 {
   opacity: 0.2;
+}
+
+.opacity-5 {
+  opacity: 0.05;
 }
 
 .opacity-75 {
@@ -3069,10 +3079,6 @@ select {
     align-items: flex-start;
   }
 
-  .lg\:items-center {
-    align-items: center;
-  }
-
   .lg\:justify-end {
     justify-content: flex-end;
   }
@@ -3080,11 +3086,6 @@ select {
   .lg\:gap-x-16 {
     -moz-column-gap: 4rem;
          column-gap: 4rem;
-  }
-
-  .lg\:gap-x-6 {
-    -moz-column-gap: 1.5rem;
-         column-gap: 1.5rem;
   }
 
   .lg\:gap-x-8 {
@@ -3098,6 +3099,12 @@ select {
 
   .lg\:gap-y-8 {
     row-gap: 2rem;
+  }
+
+  .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2rem * var(--tw-space-x-reverse));
+    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:self-end {
