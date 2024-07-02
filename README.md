@@ -27,3 +27,7 @@ npm run buildvite
 
 ### If any CSS changes are made, it must be compiled from the input.css to the output.css, so run this
 npm run buildcss
+
+### Whenever changes are made to the database, the following commands must be run:
+flask db migrate -m "Describe what changed"
+flask db upgrade
